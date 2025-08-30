@@ -12,9 +12,11 @@ gap = 1  # Reduced from 1
 sizeX = 15
 sizeY = 20
 
+max_width = length - min_metal6_spacing*2
 
-x_width = [random.uniform(min_metal6_width, 6) for _ in range(sizeX)]
-y_width = [random.uniform(min_metal6_width, 6) for _ in range(sizeY)]
+
+x_width = [random.uniform(min_metal6_width, max_width) for _ in range(sizeX)]
+y_width = [random.uniform(min_metal6_width, max_width) for _ in range(sizeY)]
 
 structure = [[random.randint(0, 1) for _ in range(sizeY)] for _ in range(sizeX)]
 
