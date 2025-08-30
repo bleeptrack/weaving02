@@ -13,8 +13,8 @@ sizeX = 15
 sizeY = 20
 
 
-x_width = [random.uniform(min_metal6_width, 7) for _ in range(sizeX)]
-y_width = [random.uniform(min_metal6_width, 7) for _ in range(sizeY)]
+x_width = [random.uniform(min_metal6_width, 6) for _ in range(sizeX)]
+y_width = [random.uniform(min_metal6_width, 6) for _ in range(sizeY)]
 
 structure = [[random.randint(0, 1) for _ in range(sizeY)] for _ in range(sizeX)]
 
