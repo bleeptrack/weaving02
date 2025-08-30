@@ -12,7 +12,7 @@ gap = 1  # Reduced from 1
 sizeX = 15
 sizeY = 20
 
-max_width = length - min_metal6_spacing*2
+max_width = length - min_metal6_spacing
 
 
 x_width = [random.uniform(min_metal6_width, max_width) for _ in range(sizeX)]
