@@ -40,23 +40,23 @@ cell = lib.new_cell("my_logo")
 for i in range(sizeX):  # Reduced from 10
     start_x = 0
     start_stub = (length-y_width[0]) /2 - min_metal6_spacing
-    print("start_stub", start_stub, (length-y_width[0]) /2 - min_metal6_spacing)
+    print("start_stub", y_width[0])
   
     for j in range(sizeY):  # Reduced from 10
         if j>0 and structure[i][j] == 1 and structure[i][j-1] == 0: 
             start_x = j
-            start_stub = (length-y_width[j]) /2 - min_metal6_spacing
+            start_stub = (length-y_width[j-1]) /2 - min_metal6_spacing
             
 
         if j>0 and structure[i][j] == 0 and structure[i][j-1] == 1 or j==len(structure[i])-1 and structure[i][j] == 1:
             end_x = j-1
-            end_stub = (length-y_width[j-1]) /2 - min_metal6_spacing
+            end_stub = (length-y_width[j]) /2 - min_metal6_spacing
             if j==len(structure[i])-1 and structure[i][j] == 1:
                 end_x = j
-                end_stub = (length-y_width[j]) /2 - min_metal6_spacing
+                
 
           
-            vert_width = y_width[j]
+            vert_width = x_width[i]
             
             block_length = length * (end_x-start_x+1)
            
@@ -82,15 +82,16 @@ for i in range(sizeY):  # Reduced from 10
         #print("j", j, "i", i, structure[j][i])
         if j>0 and structure[j][i] == 1 and structure[j-1][i] == 0: 
             start_y = j
-            start_stub = (length-x_width[j]) /2 - min_metal6_spacing
+            start_stub = (length-x_width[j-1]) /2 - min_metal6_spacing
 
         if j>0 and structure[j][i] == 0 and structure[j-1][i] == 1 or j==len(structure)-1 and structure[j][i] == 1:
             end_y = j-1
+            end_stub = (length-x_width[j]) /2 - min_metal6_spacing
             if j==len(structure)-1 and structure[j][i] == 1:
                 end_y = j
-                end_stub = (length-x_width[j]) /2 - min_metal6_spacing
+                
         
-            horz_width = x_width[j]
+            horz_width = y_width[i]
             
             block_length = length * (end_y-start_y+1)
             
@@ -114,8 +115,8 @@ for i in range(sizeY):  # Reduced from 10
 pr_boundary = gdstk.rectangle((0, 0), (30, 30), layer=189, datatype=4)
 cell.add(pr_boundary)
 
-# Add comprehensive Active fillers (layer 1) to meet minimum density requirements
-# Use consistent 2x2um fillers to ensure AFil.a compliance (1um < width < 5um)
+#Add comprehensive Active fillers (layer 1) to meet minimum density requirements
+#Use consistent 2x2um fillers to ensure AFil.a compliance (1um < width < 5um)
 active_dist = 1.5
 active_size = 3.0 
 overhang = 0.18
